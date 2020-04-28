@@ -1,0 +1,9 @@
+.user-container {
+    margin-left: 2cm;
+    margin-top: 1cm;
+}
+
+.found-user {
+    font-size: .5cm;
+    border-bottom: .3mm solid gainsboro;
+}

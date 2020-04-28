@@ -1,0 +1,22 @@
+.message-text {
+    color: rgb(0, 75, 132);
+}
+
+.sender-div {
+    border: .5mm solid lightseagreen;
+    overflow: hidden;
+    height: min-content;
+}
+
+.messages-container {
+    margin-top: 1cm;
+}
+
+.text-div {
+    word-wrap: break-word;
+}
+
+#message-form {
+    margin-top: .7cm;
+}
+

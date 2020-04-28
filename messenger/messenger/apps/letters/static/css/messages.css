@@ -1,0 +1,22 @@
+.message-link {
+    color: rgb(0, 75, 132);
+}
+
+.message-link:hover {
+    color: rgb(0, 75, 132);
+}
+
+.message {
+    padding: .3cm;
+    border: .5mm solid lightskyblue;
+}
+
+#search_user_form,
+.message-container {
+    margin-left: 2cm;
+    margin-top: 1cm;
+}
+
+.unread {
+    border: .5mm solid blue;
+}

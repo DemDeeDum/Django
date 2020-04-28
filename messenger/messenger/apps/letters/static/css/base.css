@@ -1,0 +1,35 @@
+body {
+    width: 100vw;
+    overflow-x: hidden;
+}
+header {
+    font-weight: bold;
+}
+
+.sea-color {
+    background-color: lightseagreen;
+}
+
+.footer-border-right {
+    border-right: .4mm solid white;
+    padding-right: 0.7cm;   
+    padding-left: 0.7cm;
+}
+
+.footer-row {
+    color:white;
+    padding: 0.5mm;
+}
+
+.sea-green {
+    color: lightseagreen;
+}
+
+.white {
+    color: white;
+}
+
+a:hover {
+    text-decoration: none;
+    color: yellow;
+}

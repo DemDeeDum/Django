@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Messages{% endblock %}
+
+{% block content %} 
+
+{% load static %}
+
+
+<link rel="stylesheet" type="text/css" href='{% static "/css/messages.css" %}'>
+
+
+    <div id='top'></div>
+
+    <a class="mt-5 ml-4 fixed-top sea-green" href='#top'>Go up</a>
+    <form class="mt-5" method="GET" id='search_user_form' action='/messages/users'>
+        {% csrf_token %}
+        <input type='text' name='user_substr' class="form-control col-2" required>
+        <input type='submit' value='Find user' class='mt-2 btn btn-info'>
+    </form>
+
+    <div class="message-container container">   
+        {% for i in messages %}
+        <a class="row message-link" href='/messages/dialog/?name={{i.sender}}'>
+            <div class="col-2 message {% if i.read_mark == 'unread' %} unread {% endif %}">
+                {{i.sender}}
+            </div>
+            <div class="col-7 message {% if i.read_mark == 'unread' %} unread {% endif %}">
+                {%if i.sender == request.user %}You: {% endif %} {{i.text}}
+            </div>
+            <div class="col-3 message {% if i.read_mark == 'unread' %} unread {% endif %}">
+                {{i.sent_date}}
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+    <a class="mb-5 ml-4 fixed-bottom sea-green" href="#bottom">Go down</a>
+    <div id='bottom'></div>
+{% endblock %}

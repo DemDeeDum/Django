@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Home page{% endblock %}
+
+{% block content %} 
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href='{% static "/css/main.css" %}'>
+
+<nav class="d-flex flex-column justify-content-center">
+    {% if request.user.is_authenticated %}
+        <div class="big-text text-center sea-green">
+            Welcome, {{request.user}}!!!
+        </div>
+        <div class="medium-text d-flex justify-content-center">
+            <a href="/messages" class='sea-green'>Messages</a>
+        </div>
+    {% else %}
+        <div class="d-flex justify-content-around big-text">
+            <a href="/login" class="sea-green">Sign in</a>
+            <a href="/register" class="sea-green">Register</a>
+        </div>
+    {% endif %}
+</div>
+
+{{name}}
+{% endblock %}

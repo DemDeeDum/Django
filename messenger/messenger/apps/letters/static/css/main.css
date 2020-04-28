@@ -1,0 +1,15 @@
+nav {
+    height: 95vh;
+}
+
+.big-text {
+    font-size: 2cm;
+}
+
+.medium-text {
+    font-size: 1cm;
+}
+
+a:hover {
+    text-decoration: none;
+}

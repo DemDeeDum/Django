@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Users{% endblock %}
+
+{% block content %} 
+
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href='{% static "/css/users.css" %}'>
+
+
+
+    <div id='top'></div>
+    <a class="mt-4 ml-4 fixed-top sea-green" href="/messages">Back to messages</a>
+    <a class="mt-5 ml-4 fixed-top sea-green" href='#top'>Go up</a>
+    <div class="container user-container">
+
+        {% for i in users %}
+        <div class="row found-user sea-green" >
+            <div class="col-10">
+                {{i.username}}
+            </div>
+            <a class="col-2 d-flex justify-content-end sea-green" href='/messages/dialog/?name={{i.username}}'>
+                Send a letter
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    <a class="mb-5 ml-4 fixed-bottom sea-green" href="#bottom">Go down</a>
+    <div id='bottom'></div>
+{% endblock %}
