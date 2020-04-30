@@ -4,6 +4,8 @@ from .models import Message
 from django.contrib.auth.models import User 
 
 def index(request) :
+    if not request.user.is_authenticated :
+        return render(request, 'messenger/main.html')
     messages = Message.objects.filter(recipient = request.user)
     unique_users = list()
     res = list()
@@ -26,7 +28,7 @@ def index(request) :
 
 
 def users(request) :
-    if request.method == 'GET' :
+    if request.method == 'GET' and request.user.is_authenticated :
         username = request.GET.get('user_substr', '')
         if username != '' :
             users = User.objects.filter(username__contains=username)
@@ -36,7 +38,7 @@ def users(request) :
 
 
 def dialog(request) :
-    if request.method == 'GET' :
+    if request.method == 'GET' and request.user.is_authenticated:
         username = request.GET.get('name', '')
         if username != '' :
             db_set = Message.objects.filter(sender = User.objects.get(username = username), recipient = request.user)
@@ -51,7 +53,7 @@ def dialog(request) :
 
 
 def send_message(request) :
-    if request.method == 'GET' :
+    if request.method == 'GET' and request.user.is_authenticated:
         usermessage = request.GET.get('message', '')
         if usermessage != '' :
             username = request.GET.get('name', '')
