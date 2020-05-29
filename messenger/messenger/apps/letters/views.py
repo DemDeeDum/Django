@@ -46,7 +46,7 @@ def dialog(request) :
             if username != request.user.username :
                 messages = messages + list(Message.objects.filter(sender = request.user, recipient = User.objects.get(username = username)))
             messages.sort(key = lambda message: message.sent_date)
-            if messages[len(messages) - 1].sender != request.user :
+            if len(messages) > 1 and messages[len(messages) - 1].sender != request.user :
                 db_set.update(read_mark = 'read')
             return render(request, 'letters/dialog.html', {'messages' : messages, 'username': username})
     return render(request, 'messenger/main.html')

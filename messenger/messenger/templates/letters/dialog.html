@@ -12,33 +12,35 @@
     <div id='top'></div>
     <a class="mt-4 ml-4 fixed-top sea-green" href="/messages">Back to messages</a>
     <a class="mt-5 ml-4 fixed-top sea-green" href='#top'>Go up</a>
-    <div class="messages-container">
+    <div class="d-flex flex-column">
+        <div class="messages-container flex-lg-grow-1">
 
-        {% for i in messages %}
-        <div class="row message-text mt-1" href='/'>
-            <div class="col-1"></div>
-            <div class="col-2 sender-div">
-                <div>
-                    {% if i.sender == request.user %} You {% else %} {{i.sender}} {% endif %}
+            {% for i in messages %}
+            <div class="row message-text mt-1" href='/'>
+                <div class="col-1"></div>
+                <div class="col-2 sender-div">
+                    <div>
+                        {% if i.sender == request.user %} You {% else %} {{i.sender}} {% endif %}
+                    </div>
                 </div>
+                <div class="col-6 text-div">
+                    {{i.text}}
+                </div>
+                <div class="col-2">
+                    {{i.sent_date}}
+                </div>
+                <div class="col-1"></div>
             </div>
-            <div class="col-6 text-div">
-                {{i.text}}
-            </div>
-            <div class="col-2">
-                {{i.sent_date}}
-            </div>
-            <div class="col-1"></div>
+            {% endfor %}
         </div>
-        {% endfor %}
+        <div>
+            <form id='message-form' class="d-flex justify-content-center mb-5" method="GET" action='/messages/send' >
+                <input type='text' class="form-control col-6" name='message' placeholder="Write your message..." >
+                <input type='hidden' value="{{username}}" name='name'>
+                <input type='submit' value="Send" class="btn btn-info ml-1">
+            </form>
+        </div>
     </div>
-
-    <form id='message-form' class="d-flex justify-content-center mb-5" method="GET" action='/messages/send' >
-        <input type='text' class="form-control col-6" name='message' placeholder="Write your message..." >
-        <input type='hidden' value="{{username}}" name='name'>
-        <input type='submit' value="Send" class="btn btn-info ml-1">
-    </form>
-
     <a class="mb-5 ml-4 fixed-bottom sea-green" href="#bottom">Go down</a>
     <div id='bottom'></div>
 {% endblock %}
